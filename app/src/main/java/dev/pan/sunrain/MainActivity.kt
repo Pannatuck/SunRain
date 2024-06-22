@@ -8,12 +8,14 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import dagger.hilt.android.AndroidEntryPoint
 import dev.pan.sunrain.presentation.screens.HomeScreen
 import dev.pan.sunrain.presentation.screens.Screen
 import dev.pan.sunrain.presentation.screens.SplashScreen
 import dev.pan.sunrain.ui.theme.SunRainTheme
 
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
