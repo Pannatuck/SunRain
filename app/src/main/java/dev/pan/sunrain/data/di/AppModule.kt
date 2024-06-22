@@ -15,11 +15,12 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
+
     @Provides
     @Singleton
     fun provideRetrofit() : ApiService =
         Retrofit.Builder()
-            .baseUrl(Constants.BASE_URL)
+            .baseUrl("https://api.weatherapi.com/v1/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiService::class.java)

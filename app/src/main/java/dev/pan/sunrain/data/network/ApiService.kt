@@ -10,7 +10,7 @@ import retrofit2.http.Query
 /*Temp, condition(text, icon), wind_kph, humidity, feelslike_c*/
 interface ApiService {
 
-    @GET("/current.json")
+    @GET("current.json")
     suspend fun getCurrentWeather(
         @Query("key") apiKey: String,
         @Query("q") location: String,

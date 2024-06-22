@@ -1,6 +1,5 @@
-package dev.pan.sunrain.presentation.screens
+package dev.pan.sunrain.presentation.screens.splashScreen
 
-import android.window.SplashScreen
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Box
@@ -21,8 +20,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import dev.pan.sunrain.presentation.screens.Screen
 import kotlinx.coroutines.delay
-import kotlinx.serialization.Serializable
 
 
 @Composable
