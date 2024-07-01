@@ -20,22 +20,32 @@ class HomeViewModel @Inject constructor(private val repository: ApiRepository) :
 
     init {
         getCurrentWeather()
+        getForecastWeather()
     }
 
     // TODO: location from edit field and enum for aqi
     fun getCurrentWeather() {
         viewModelScope.launch {
             repository.getCurrentWeather(
-                apiKey = Constants.API_KEY, location = "London", aqi = "no"
+                apiKey = Constants.API_KEY, location = "Kyiv", aqi = "no"
             ).let {
-                if (it.isSuccessful) {
-                    _homeState.update { currentState ->
-                        currentState.copy(
-                            currentWeather = currentState.currentWeather
-                        )
-                    }
-                } else {
-                    Log.d("HomeViewModelError", "MESSAGE ${it.body()?.current?.temp_c} ")
+                _homeState.update { state ->
+                    /*you need to get response body, for it to work. For some reason when you get
+                    * just some parameter of it, it's not working*/
+                    // got, why it's not working (i'm idiot lmao), i tried to save value of another type into state
+                    state.copy(currentWeather = it.body())
+                }
+            }
+        }
+    }
+
+    fun getForecastWeather() {
+        viewModelScope.launch {
+            repository.getForecastWeather(
+                apiKey = Constants.API_KEY, location = "Kyiv", days = 3, aqi = "no"
+            ).let {
+                _homeState.update { state ->
+                    state.copy(forecastWeather = it.body())
                 }
             }
         }

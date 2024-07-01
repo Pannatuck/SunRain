@@ -1,4 +1,4 @@
-package dev.pan.sunrain.data.network.models
+package dev.pan.sunrain.data.network.models.forecast
 
 data class Location(
     val country: String,

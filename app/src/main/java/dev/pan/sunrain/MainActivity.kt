@@ -1,5 +1,6 @@
 package dev.pan.sunrain
 
+import android.Manifest
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -12,6 +13,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.permissionx.guolindev.PermissionX
 import dagger.hilt.android.AndroidEntryPoint
 import dev.pan.sunrain.presentation.screens.Screen
 import dev.pan.sunrain.presentation.screens.homeScreen.HomeScreen
@@ -25,6 +27,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+
         setContent {
             SunRainTheme {
                 val navController = rememberNavController()
@@ -41,8 +45,14 @@ class MainActivity : ComponentActivity() {
                         val state = viewModel.homeState.value
 
                         HomeScreen(state = state.copy(
-
+                            currentWeather = viewModel.homeState.value.currentWeather,
+                            forecastWeather = viewModel.homeState.value.forecastWeather
                         ))
+
+
+
+
+
 //                        val args = backStackEntry.toRoute<Screen.Home>() // receive arguments passed to this screen if navigated through a route
 //                        Column(
 //                            modifier = Modifier.fillMaxSize(),
@@ -57,5 +67,7 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+
 }
 

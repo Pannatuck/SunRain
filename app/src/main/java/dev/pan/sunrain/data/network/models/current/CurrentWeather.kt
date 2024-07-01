@@ -1,4 +1,4 @@
-package dev.pan.sunrain.data.network.models
+package dev.pan.sunrain.data.network.models.current
 
 data class CurrentWeather(
     val current: Current,
